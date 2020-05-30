@@ -30,3 +30,4 @@
 *.exe
 *.out
 *.app
+/WindowsSubsystem/.vs/WindowsSubsystem/v16/Browse.VC.opendb
