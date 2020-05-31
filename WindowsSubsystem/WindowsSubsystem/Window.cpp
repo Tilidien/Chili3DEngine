@@ -17,7 +17,7 @@ Window::WindowClass::WindowClass() noexcept
 	wc.hbrBackground = nullptr;			//Brush to be used by os to draw WIndow Backround. set to null since we gona draw everything ourselfes
 	wc.lpsMenuName = nullptr;			//Pointer to null terminated char string that specifies resource name of the class menu. Not needed, since we do all ourselfes
 	wc.lpszClassName = GetName();		//Class name used to give to os when creating WIndows of this class type
-		wc.hIconSM = nullptr;			//Icon for the Application
+	wc.hIconSM = nullptr;			//Icon for the Application
 	RegisterClassEx(&wc);
 }
 Window::WindowClass::~WindowClass()
@@ -72,8 +72,8 @@ LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPAR
 	{
 		//extract pointer to Windows class from creation data
 		const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam)
-		Window* const pWnd = static_cast<Window*>(pCreate->lpCreateParams); // why ist const called after type?
-		//Set WinAPI-managed user data to store ptr to window class
+			Window* const pWnd = static_cast<Window*>(pCreate->lpCreateParams); // why ist const called after type?
+			//Set WinAPI-managed user data to store ptr to window class
 		SetWindowLongPtr(hWnd, GWLP_GWLP_USERDATA, reinterpret_cast<Long_PTR>(pWnd));
 		//set message proc to normal (non-setup) handler now that setup is finished
 		SetWindowLongPtr(hwnd, GWLP_WNDPROC, reinterpete_cast<LONG_PTR>(&Window::HandleMsgThunk));
